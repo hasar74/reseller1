@@ -2,7 +2,7 @@
 window.PRODUCT = {
   name: "AFC Life Science",
   reseller: "[Nama Toko Anda]",
-  whatsapp: "6281234567890",   // format 628..., tanpa +
+  whatsapp: "6285701042858",   // format 628..., tanpa +
   pixelId: "",                 // kosong = Meta Pixel tidak dimuat
   priceNote: "Harga per box, berdasarkan poster 3 September 2026. Harga dan stok terbaru dikonfirmasi lewat WhatsApp.",
   products: [
