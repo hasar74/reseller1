@@ -3,7 +3,7 @@
   var P = window.PRODUCT, $ = function (s) { return document.querySelector(s); };
   var rp = function (n) { return "Rp" + n.toLocaleString("id-ID"); };
   var reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
-  var wa = function (text) { return "https://wa.me/" + P.whatsapp + "?text=" + encodeURIComponent(text); };
+  var wa = function (text) { return "https://wa.me/6285701042858" + P.whatsapp + "?text=" + encodeURIComponent(text); };
   var orderMsg = function (p) {
     return "Halo, saya tertarik membeli produk AFC Life Science.\n\nNama produk: " + p.name + "\nHarga pada website: " + rp(p.price) + "/box\nJumlah: 1 box\n\nMohon informasi ketersediaan produk, harga terbaru, dan cara pemesanannya.\n\nTerima kasih.";
   };
