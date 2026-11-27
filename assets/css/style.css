@@ -179,3 +179,25 @@ button.pc{width:100%;text-align:left;font:inherit;cursor:pointer}
 .pinfo th.on{background:var(--gold);color:#201600}
 .pinfo td.on{background:#fbf6e8;font-weight:700;color:var(--gold-d)}
 .nb{display:block;margin-top:4px;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+
+/* ===== Perbaikan mobile: dialog dan tabel harga ===== */
+dialog{margin:auto;max-width:94vw}
+.x{position:absolute;float:none;margin:0;top:10px;right:10px;z-index:3}
+.pd{padding-top:56px}
+@media(max-width:760px){#dbody{padding:56px 18px 22px}}
+#pdlg.lb{width:auto;background:transparent;overflow:visible;max-height:none}
+#pdlg.lb .zoom{width:auto;height:auto;max-width:94vw;max-height:88vh;margin:auto;border-radius:16px;object-fit:contain}
+#pdlg.lb::backdrop{background:#000000b3}
+.ptb{border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.pr0{display:grid;grid-template-columns:.9fr 1.1fr 1.1fr;border-bottom:1px solid var(--line)}
+.pr0:last-child{border-bottom:0}
+.pr0>*{padding:12px 8px;display:flex;flex-direction:column;justify-content:center;min-width:0;font-size:.88rem;font-style:normal}
+.pr0 b{font-size:.9rem}
+.pr0 small{font-size:.68rem;font-weight:400;opacity:.85}
+.pr0.h{background:var(--navy);color:#fff;font-weight:600}
+.pr0.h .on{background:var(--gold);color:#201600}
+.pr0 .on{background:#fbf6e8;color:var(--gold-d);font-weight:700}
+.pr0.h .on{background:var(--gold);color:#201600}
+.nb{display:block;margin-top:3px;font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+@media(min-width:600px){.pr0>*{padding:14px 16px;font-size:.98rem}.pr0 b{font-size:1rem}}
+@media(max-width:600px){.pinfo{padding:18px}.pinfo h3{font-size:1.7rem}}

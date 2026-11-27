@@ -79,10 +79,10 @@
           '<h4>Topik dokumen</h4><p>' + x.topic + '</p><p>' + pdesc(x.no) + '</p>' + (x.note ? '<div class="warn">' + x.note + '</div>' : '') +
           '<p class="small">Topik ini berasal dari dokumen paten dan bukan daftar khasiat produk. Paten bukan bukti manfaat klinis produk jadi, dan hubungannya dengan bahan serta formula perlu diverifikasi. Suplemen bukan obat dan tidak menggantikan pengobatan dokter.</p>' +
           '<a class="btn" target="_blank" rel="noopener" href="' + gp(x.no) + '">Buka di Google Patents</a></div>';
-        pdlg.showModal();
+        pdlg.classList.remove("lb"); pdlg.showModal();
       } else if (z) {
         pbody.innerHTML = '<img class="zoom" src="' + PT[cur].img + '" alt="Infografis referensi paten ' + PT[cur].name + '">';
-        pdlg.showModal();
+        pdlg.classList.add("lb"); pdlg.showModal();
       }
       if (e.target === pdlg || e.target.closest("[data-pclose]")) pdlg.close();
     });
@@ -91,19 +91,21 @@
   // Info penyesuaian harga
   var PI = P.priceInfo, pinfo = $("#pinfo");
   if (PI && pinfo) {
-    var subOn = new Date() <= new Date(PI.until + "T23:59:59"), nb = '<span class="nb">Berlaku sekarang</span>';
+    var subOn = new Date() <= new Date(PI.until + "T23:59:59"), nb = '<em class="nb">Berlaku sekarang</em>';
+    var short = new Date(PI.until + "T12:00:00").toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" });
+    var c1 = subOn ? "on" : "", c2 = subOn ? "" : "on";
     pinfo.innerHTML = '<div><span class="eyebrow">' + PI.eyebrow + '</span><h3>' + PI.title + '</h3>' +
-      '<p class="small" style="margin:0 0 14px">Diperbarui: ' + PI.updated + '</p><div class="tw"><table><tr><th>Produk</th>' +
-      '<th class="' + (subOn ? "on" : "") + '">Harga subsidi<br><small>hingga ' + PI.untilLabel + '</small>' + (subOn ? nb : "") + '</th>' +
-      '<th class="' + (subOn ? "" : "on") + '">Harga final<br><small>setelah periode subsidi</small>' + (subOn ? "" : nb) + '</th></tr>' +
+      '<p class="small" style="margin:0 0 14px">Diperbarui: ' + PI.updated + '</p><div class="ptb">' +
+      '<div class="pr0 h"><span>Produk</span><span class="' + c1 + '">Harga subsidi<small>s.d. ' + short + '</small>' + (subOn ? nb : "") + '</span>' +
+      '<span class="' + c2 + '">Harga final<small>setelahnya</small>' + (subOn ? "" : nb) + '</span></div>' +
       PI.rows.map(function (r) {
-        return '<tr><td>' + r.name + '</td><td class="' + (subOn ? "on" : "") + '">' + rp(r.sub) + '</td><td class="' + (subOn ? "" : "on") + '">' + rp(r.fin) + (r.tetap ? ' <small>(harga tetap)</small>' : '') + '</td></tr>';
-      }).join("") + '</table></div><p class="small">' + PI.note + '</p></div>' +
+        return '<div class="pr0"><b>' + r.name + '</b><span class="' + c1 + '">' + rp(r.sub) + '</span><span class="' + c2 + '">' + rp(r.fin) + (r.tetap ? '<small>harga tetap</small>' : '') + '</span></div>';
+      }).join("") + '</div><p class="small">' + PI.note + '</p></div>' +
       (PI.image ? '<button class="pimg" data-zoomsrc="' + PI.image + '" aria-label="Perbesar poster harga"><img src="' + PI.image + '" alt="Poster penyesuaian harga" loading="lazy"><span>Klik untuk memperbesar</span></button>' : '');
   }
   document.addEventListener("click", function (e) {
     var z = e.target.closest("[data-zoomsrc]");
-    if (z) { pbody.innerHTML = '<img class="zoom" src="' + z.dataset.zoomsrc + '" alt="Poster penyesuaian harga">'; pdlg.showModal(); }
+    if (z) { pbody.innerHTML = '<img class="zoom" src="' + z.dataset.zoomsrc + '" alt="Poster penyesuaian harga">'; pdlg.classList.add("lb"); pdlg.showModal(); }
   });
 
   // Navbar
