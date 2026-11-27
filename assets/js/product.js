@@ -1,7 +1,7 @@
 /* Semua data produk dan harga ada di sini. Ubah file ini saja, tanpa menyentuh desain. */
 window.PRODUCT = {
   name: "AFC Life Science",
-  reseller: "Liya Distributor Resmi AFC",
+  reseller: "[Nama Toko Anda]",
   whatsapp: "6281234567890",   // format 628..., tanpa +
   pixelId: "",                 // kosong = Meta Pixel tidak dimuat
   priceNote: "Harga per box, berdasarkan poster 3 September 2026. Harga dan stok terbaru dikonfirmasi lewat WhatsApp.",
@@ -76,3 +76,14 @@ window.PRODUCT.priceInfo = {
     { name: "Hikari", sub: 1800000, fin: 1800000, tetap: true }
   ]
 };
+
+/* Galeri dokumentasi. show:false menyembunyikan foto. cap = teks kecil di atas foto. */
+window.GALLERY = [
+  { src: "assets/images/gallery/foto-1.webp", w: 1441, h: 1920, alt: "Stok SOP Subarashi dan Utsukushhii versi 2.0 bersama kami", cap: "Stok SOP Subarashi dan Utsukushhii 2.0", show: true },
+  { src: "assets/images/gallery/foto-2.webp", w: 864, h: 1920, alt: "Tumpukan stok SOP Subarashi dan Utsukushhii", cap: "Stok produk kami", show: true },
+  { src: "assets/images/gallery/foto-3.webp", w: 1920, h: 864, alt: "Deretan kemasan SOP Subarashi dan Utsukushhii dengan segel plastik", cap: "Kemasan tersegel plastik", show: true },
+  { src: "assets/images/gallery/foto-4.webp", w: 864, h: 1920, alt: "Foto bersama pelanggan dengan produk SOP Subarashi dan Utsukushhii", cap: "Bersama pelanggan kami", show: true },
+  { src: "assets/images/gallery/foto-5.webp", w: 1920, h: 864, alt: "Foto bersama pelanggan dengan produk SOP Subarashi", cap: "Bersama pelanggan kami", show: true },
+  { src: "assets/images/gallery/foto-6.webp", w: 864, h: 1920, alt: "Dokumentasi bersama produk SOP Subarashi dan Utsukushhii", cap: "", show: true },
+  { src: "assets/images/gallery/foto-7.webp", w: 1448, h: 1920, alt: "Foto bersama pelanggan dengan produk Utsukushhii dan SOP Subarashi", cap: "Bersama pelanggan kami", show: true }
+];

@@ -201,3 +201,13 @@ dialog{margin:auto;max-width:94vw}
 .nb{display:block;margin-top:3px;font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
 @media(min-width:600px){.pr0>*{padding:14px 16px;font-size:.98rem}.pr0 b{font-size:1rem}}
 @media(max-width:600px){.pinfo{padding:18px}.pinfo h3{font-size:1.7rem}}
+
+/* ===== Galeri dokumentasi ===== */
+.gal2{column-count:2;column-gap:10px;margin:28px 0 12px}
+@media(min-width:900px){.gal2{column-count:3;column-gap:14px}}
+.gi{break-inside:avoid;margin:0 0 10px;border-radius:18px;overflow:hidden}
+@media(min-width:900px){.gi{margin-bottom:14px}}
+.gi button{display:block;width:100%;padding:0;border:0;background:var(--navy);cursor:zoom-in;position:relative;overflow:hidden}
+.gi img{width:100%;height:auto;transition:transform .6s}
+.gi button:hover img{transform:scale(1.04)}
+.gi .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;color:#fff;font-size:.8rem;line-height:1.35;text-align:left;background:linear-gradient(transparent,#0b1f3fe6)}

@@ -101,12 +101,18 @@
       PI.rows.map(function (r) {
         return '<div class="pr0"><b>' + r.name + '</b><span class="' + c1 + '">' + rp(r.sub) + '</span><span class="' + c2 + '">' + rp(r.fin) + (r.tetap ? '<small>harga tetap</small>' : '') + '</span></div>';
       }).join("") + '</div><p class="small">' + PI.note + '</p></div>' +
-      (PI.image ? '<button class="pimg" data-zoomsrc="' + PI.image + '" aria-label="Perbesar poster harga"><img src="' + PI.image + '" alt="Poster penyesuaian harga" loading="lazy"><span>Klik untuk memperbesar</span></button>' : '');
+      (PI.image ? '<button class="pimg" data-zoomsrc="' + PI.image + '" data-alt="Poster penyesuaian harga" aria-label="Perbesar poster harga"><img src="' + PI.image + '" alt="Poster penyesuaian harga" loading="lazy"><span>Klik untuk memperbesar</span></button>' : '');
   }
   document.addEventListener("click", function (e) {
     var z = e.target.closest("[data-zoomsrc]");
-    if (z) { pbody.innerHTML = '<img class="zoom" src="' + z.dataset.zoomsrc + '" alt="Poster penyesuaian harga">'; pdlg.classList.add("lb"); pdlg.showModal(); }
+    if (z) { pbody.innerHTML = '<img class="zoom" src="' + z.dataset.zoomsrc + '" alt="' + (z.dataset.alt || "Foto") + '">'; pdlg.classList.add("lb"); pdlg.showModal(); }
   });
+
+  // Galeri dokumentasi
+  var gd = $("#gdok"), G = window.GALLERY || [];
+  if (gd) gd.innerHTML = G.filter(function (g) { return g.show; }).map(function (g) {
+    return '<figure class="gi rv"><button data-zoomsrc="' + g.src + '" data-alt="' + g.alt + '" aria-label="Perbesar foto: ' + g.alt + '"><img src="' + g.src + '" alt="' + g.alt + '" width="' + g.w + '" height="' + g.h + '" loading="lazy">' + (g.cap ? '<span class="cap">' + g.cap + '</span>' : '') + '</button></figure>';
+  }).join("");
 
   // Navbar
   var hd = $("#hd"), nav = $("#nav"), bg = $("#bg");
