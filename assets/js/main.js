@@ -44,6 +44,50 @@
     if (e.target === dlg || e.target.closest("[data-close]")) dlg.close();
   });
 
+  // Referensi paten
+  var pt = $("#ptabs"), pl = $("#plist"), pim = $("#pimg"), pdlg = $("#pdlg"), pbody = $("#pbody"), PT = window.PATENTS || [], cur = 0;
+  var two = function (n) { return (n < 10 ? "0" : "") + n; };
+  var pstat = function (no) {
+    var m = no.match(/([AB])\d?$/);
+    return !m ? "Dokumen paten" : m[1] === "A" ? "Publikasi permohonan" : "Paten diberikan";
+  };
+  var pdesc = function (no) {
+    var s = pstat(no);
+    return s === "Paten diberikan" ? "Dokumen ini adalah publikasi paten yang telah diberikan oleh kantor paten terkait."
+      : s === "Publikasi permohonan" ? "Dokumen ini adalah publikasi permohonan paten. Belum tentu sudah diberikan, jadi cek statusnya di Google Patents."
+      : "Status dokumen perlu dicek langsung di Google Patents.";
+  };
+  var gp = function (no) { return "https://patents.google.com/patent/" + no + "/en"; };
+  var drawP = function (i) {
+    cur = i;
+    var p = PT[i];
+    [].slice.call(pt.children).forEach(function (b, k) { b.setAttribute("aria-selected", k === i); b.classList.toggle("on", k === i); });
+    pim.innerHTML = '<button class="pimg" data-zoom="1" aria-label="Perbesar infografis ' + p.name + '"><img src="' + p.img + '" alt="Infografis referensi paten ' + p.name + '" loading="lazy"><span>Klik untuk memperbesar</span></button>';
+    pl.innerHTML = p.items.map(function (x, k) {
+      return x.show ? '<button class="pc" data-k="' + k + '"><span class="no">' + two(k + 1) + '</span><b>' + x.no + '</b><span class="st">' + pstat(x.no) + '</span><p>' + x.topic + '</p></button>' : "";
+    }).join("");
+  };
+  if (pt && PT.length) {
+    pt.innerHTML = PT.map(function (p, i) { return '<button role="tab" data-p="' + i + '">' + p.name + '</button>'; }).join("");
+    pt.onclick = function (e) { var b = e.target.closest("[data-p]"); if (b) drawP(+b.dataset.p); };
+    drawP(0);
+    document.addEventListener("click", function (e) {
+      var c = e.target.closest("[data-k]"), z = e.target.closest("[data-zoom]");
+      if (c) {
+        var k = +c.dataset.k, x = PT[cur].items[k];
+        pbody.innerHTML = '<div class="pd"><span class="eyebrow">' + PT[cur].name + ' · Paten ' + two(k + 1) + '</span><h3>' + x.no + '</h3><span class="st">' + pstat(x.no) + '</span>' +
+          '<h4>Topik dokumen</h4><p>' + x.topic + '</p><p>' + pdesc(x.no) + '</p>' + (x.note ? '<div class="warn">' + x.note + '</div>' : '') +
+          '<p class="small">Topik ini berasal dari dokumen paten dan bukan daftar khasiat produk. Paten bukan bukti manfaat klinis produk jadi, dan hubungannya dengan bahan serta formula perlu diverifikasi. Suplemen bukan obat dan tidak menggantikan pengobatan dokter.</p>' +
+          '<a class="btn" target="_blank" rel="noopener" href="' + gp(x.no) + '">Buka di Google Patents</a></div>';
+        pdlg.showModal();
+      } else if (z) {
+        pbody.innerHTML = '<img class="zoom" src="' + PT[cur].img + '" alt="Infografis referensi paten ' + PT[cur].name + '">';
+        pdlg.showModal();
+      }
+      if (e.target === pdlg || e.target.closest("[data-pclose]")) pdlg.close();
+    });
+  }
+
   // Navbar
   var hd = $("#hd"), nav = $("#nav"), bg = $("#bg");
   addEventListener("scroll", function () { hd.classList.toggle("s", scrollY > 20); }, { passive: true });
@@ -53,7 +97,7 @@
   var so = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) links.forEach(function (l) { l.classList.toggle("on", l.getAttribute("href") === "#" + e.target.id); }); });
   }, { rootMargin: "-45% 0px -50% 0px" });
-  ["top", "tentang", "katalog", "kualitas", "legalitas", "penghargaan", "faq"].forEach(function (i) { var el = document.getElementById(i); el && so.observe(el); });
+  ["top", "tentang", "paten", "katalog", "kualitas", "legalitas", "penghargaan", "faq"].forEach(function (i) { var el = document.getElementById(i); el && so.observe(el); });
 
   // Elemen tambahan ikut animasi muncul
   document.querySelectorAll("section:not(.hero) h2, section:not(.hero) .eyebrow, .ti, .bd, .yr").forEach(function (el) {
