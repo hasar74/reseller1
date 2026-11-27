@@ -1,7 +1,7 @@
 /* Semua data produk dan harga ada di sini. Ubah file ini saja, tanpa menyentuh desain. */
 window.PRODUCT = {
   name: "AFC Life Science",
-  reseller: "[Nama Toko Anda]",
+  reseller: "Lia AFC",
   whatsapp: "6281234567890",   // format 628..., tanpa +
   pixelId: "",                 // kosong = Meta Pixel tidak dimuat
   priceNote: "Harga per box, berdasarkan poster 3 September 2026. Harga dan stok terbaru dikonfirmasi lewat WhatsApp.",
