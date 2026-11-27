@@ -1,7 +1,7 @@
 /* Semua data produk dan harga ada di sini. Ubah file ini saja, tanpa menyentuh desain. */
 window.PRODUCT = {
   name: "AFC Life Science",
-  reseller: "Lia AFC",
+  reseller: "[Nama Toko Anda]",
   whatsapp: "6281234567890",   // format 628..., tanpa +
   pixelId: "",                 // kosong = Meta Pixel tidak dimuat
   priceNote: "Harga per box, berdasarkan poster 3 September 2026. Harga dan stok terbaru dikonfirmasi lewat WhatsApp.",
@@ -59,3 +59,20 @@ window.PATENTS = [
     { no: "EP3538085B1", topic: "Penggunaan ekstrak spearmint terkait pembentukan neuron baru (neurogenesis)", show: true,
       note: "Ekstrak spearmint tidak tercantum pada daftar komposisi Hikari di website ini. Cocokkan dengan label kemasan." } ] }
 ];
+
+/* Info penyesuaian harga. Tidak mengubah harga di katalog (price pada products).
+   Ubah angka, tanggal, dan teks di sini kapan pun harga berubah. */
+window.PRODUCT.priceInfo = {
+  eyebrow: "Pembaruan Harga",
+  title: "Info Penyesuaian Harga",
+  updated: "27 November 2026",
+  until: "2026-12-13",            // format TAHUN-BULAN-TANGGAL, batas akhir harga subsidi
+  untilLabel: "13 Desember 2026",
+  image: "assets/images/banners/penyesuaian-harga.webp",
+  note: "Harga dapat berubah sewaktu-waktu. Konfirmasi harga yang berlaku lewat WhatsApp sebelum memesan.",
+  rows: [
+    { name: "SOP Subarashi", sub: 2000000, fin: 2050000 },
+    { name: "Utsukushhii", sub: 1850000, fin: 1900000 },
+    { name: "Hikari", sub: 1800000, fin: 1800000, tetap: true }
+  ]
+};

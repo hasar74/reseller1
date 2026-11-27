@@ -88,6 +88,24 @@
     });
   }
 
+  // Info penyesuaian harga
+  var PI = P.priceInfo, pinfo = $("#pinfo");
+  if (PI && pinfo) {
+    var subOn = new Date() <= new Date(PI.until + "T23:59:59"), nb = '<span class="nb">Berlaku sekarang</span>';
+    pinfo.innerHTML = '<div><span class="eyebrow">' + PI.eyebrow + '</span><h3>' + PI.title + '</h3>' +
+      '<p class="small" style="margin:0 0 14px">Diperbarui: ' + PI.updated + '</p><div class="tw"><table><tr><th>Produk</th>' +
+      '<th class="' + (subOn ? "on" : "") + '">Harga subsidi<br><small>hingga ' + PI.untilLabel + '</small>' + (subOn ? nb : "") + '</th>' +
+      '<th class="' + (subOn ? "" : "on") + '">Harga final<br><small>setelah periode subsidi</small>' + (subOn ? "" : nb) + '</th></tr>' +
+      PI.rows.map(function (r) {
+        return '<tr><td>' + r.name + '</td><td class="' + (subOn ? "on" : "") + '">' + rp(r.sub) + '</td><td class="' + (subOn ? "" : "on") + '">' + rp(r.fin) + (r.tetap ? ' <small>(harga tetap)</small>' : '') + '</td></tr>';
+      }).join("") + '</table></div><p class="small">' + PI.note + '</p></div>' +
+      (PI.image ? '<button class="pimg" data-zoomsrc="' + PI.image + '" aria-label="Perbesar poster harga"><img src="' + PI.image + '" alt="Poster penyesuaian harga" loading="lazy"><span>Klik untuk memperbesar</span></button>' : '');
+  }
+  document.addEventListener("click", function (e) {
+    var z = e.target.closest("[data-zoomsrc]");
+    if (z) { pbody.innerHTML = '<img class="zoom" src="' + z.dataset.zoomsrc + '" alt="Poster penyesuaian harga">'; pdlg.showModal(); }
+  });
+
   // Navbar
   var hd = $("#hd"), nav = $("#nav"), bg = $("#bg");
   addEventListener("scroll", function () { hd.classList.toggle("s", scrollY > 20); }, { passive: true });
