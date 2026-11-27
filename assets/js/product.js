@@ -1,7 +1,7 @@
 /* Semua data produk dan harga ada di sini. Ubah file ini saja, tanpa menyentuh desain. */
 window.PRODUCT = {
   name: "AFC Life Science",
-  reseller: "[Nama Toko Anda]",
+  reseller: "Lia Distributor Resmi AFC",
   whatsapp: "6281234567890",   // format 628..., tanpa +
   pixelId: "",                 // kosong = Meta Pixel tidak dimuat
   priceNote: "Harga per box, berdasarkan poster 3 September 2026. Harga dan stok terbaru dikonfirmasi lewat WhatsApp.",
@@ -11,13 +11,13 @@ window.PRODUCT = {
       desc: "Minuman serbuk dengan sejumlah bahan nutrisi pilihan.",
       ingredients: ["Salmon Ovary Peptide / Salmon Egg Extract", "Anserine", "Sardine Extract", "Tuna Heart Extract", "Fruitflow", "L-Glutathione", "Vitamin C"],
       pack: "[isi sesuai label: jumlah sachet dan berat bersih]", usage: "Ikuti petunjuk konsumsi pada kemasan.",
-      nie: "[isi nomor NIE dari kemasan]", halal: "[isi sesuai sertifikat produk]" },
+      nie: "ML 243135000300302", halal: "ID11110081017390926" },
     { id: "utsu", photo: "assets/images/lifestyle/utsukushhii.webp", name: "Utsukushhii", price: 1850000, image: "assets/images/product/utsukushhii.webp",
       category: "Minuman serbuk rasa anggur",
       desc: "Minuman serbuk dengan bahan yang tercantum pada materi produk.",
       ingredients: ["Fish Collagen", "Salmon Powder", "L-Glutathione", "Resveratrol", "Black Garlic Extract", "Vitamin D3", "Kultur bakteri baik"],
       pack: "[isi sesuai label: jumlah sachet dan berat bersih]", usage: "Ikuti petunjuk konsumsi pada kemasan.",
-      nie: "[isi nomor NIE dari kemasan]", halal: "[isi sesuai sertifikat produk]" },
+      nie: "ML 273182000100302", halal: "ID00410020764430724" },
     { id: "hikari", photo: "assets/images/lifestyle/hikari.webp", name: "Hikari", price: 1800000, image: "assets/images/product/hikari.webp",
       category: "Suplemen makanan",
       desc: "Produk dengan kandungan yang tercantum pada materi produk.",
